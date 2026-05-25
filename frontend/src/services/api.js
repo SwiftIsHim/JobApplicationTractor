@@ -1,7 +1,10 @@
 import axios from "axios";
 
-// Vite proxy forwards /api → http://localhost:5000 in dev.
-const api = axios.create({ baseURL: "/api" });
+// Use environment variable in production, /api proxy in dev
+const baseURL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : "/api";
+const api = axios.create({ baseURL });
 
 // Attach JWT to every request when present in localStorage.
 api.interceptors.request.use((config) => {
@@ -19,7 +22,7 @@ api.interceptors.response.use(
       localStorage.removeItem("user");
     }
     return Promise.reject(err);
-  }
+  },
 );
 
 export default api;
