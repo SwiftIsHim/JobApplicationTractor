@@ -41,6 +41,13 @@ export default function Signup() {
 
       <div className="flex items-center justify-center bg-white px-6 py-12">
         <form onSubmit={submit} className="w-full max-w-sm">
+          <div className="mb-6 flex items-center gap-3 md:hidden">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white shadow-soft">
+              <BriefcaseBusiness size={20} />
+            </div>
+            <span className="text-lg font-semibold text-slate-900">Job Application Tracker</span>
+          </div>
+
           <h1 className="text-2xl font-bold text-slate-900">Create an account</h1>
           <p className="mt-1 text-sm text-slate-500">Sign up to get started</p>
 
